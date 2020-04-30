@@ -30,6 +30,7 @@ height: 100%;
 .prev, .next {
     width: 7%;
     display: flex;
+    cursor: pointer;
 }
 
 .prev i, .next i {
@@ -62,6 +63,11 @@ img {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.bullets-on i, .bullets-off i {
+    margin: 0 5px;
 }
 
 .bullets-on i {
