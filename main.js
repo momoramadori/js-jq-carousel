@@ -34,6 +34,7 @@ $('.prev').click(function(){
 
 //DA FINIRE
 
+// https://stackoverflow.com/questions/29207173/adding-function-on-bullet-for-image-slider-jquery
 
 
 // //Intercetto il click sul pallin0
