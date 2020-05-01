@@ -1,59 +1,66 @@
+//intercetto il click sulla freccia "avanti" e sul suo box
 $('.next').click(function(){
+    //recupero l'immagine corrente
     var currentImg = $('img.active');
+    //recupero il pallino corrente
     var currentBull = $('i.actived');
+    //tolgo la visibilità all'immagine corrente
     currentImg.removeClass('active');
+    //tolgo la visibilità al pallino corrente
     currentBull.removeClass('actived');
+    //recupero l'immagine successiva
     var nextImg = currentImg.next('img');
+    //recupero l'immagine successiva
     var nextBull = currentBull.next();
+    // se l'immagine successiva ha lunghezza  diversa da 0 => c'è, gli passo la visibilità
     if (nextImg.length != 0) {
         nextImg.addClass('active');
         nextBull.addClass('actived');
     } else {
+        // se l'immagine successiva ha lunghezza 0 => non c'è => do la visibilità alla prima immagine e pallino e ricomincio il giro
         $('img:first-child').addClass('active');
         $('.fas:first-child').addClass('actived');
     }
 })
 
+//intercetto il click sulla freccia "indietro" e sul suo box
 $('.prev').click(function(){
+    //recupero l'immagine corrente
     var currentImg = $('img.active');
+    //recupero il pallino corrente
     var currentBull = $('i.actived');
+    //tolgo la visibilità all'immagine corrente
     currentImg.removeClass('active');
+    //tolgo la visibilità al pallino corrente
     currentBull.removeClass('actived');
+    //recupero l'immagine precedente
     var prevImg = currentImg.prev('img');
+    //recupero il pallino precedente
     var prevBull = currentBull.prev();
+    // se l'immagine precedente ha lunghezza =! 0, ovvero c'è attribuisco ad essa e al pallino visibilità
     if (prevImg.length != 0) {
         prevImg.addClass('active');
         prevBull.addClass('actived');
     } else {
+        //se non c'è ovvero l'immagine precedente ha length = 0, attribuisco visibilità all'ultima immagine e pallino
         $('img:last-child').addClass('active');
         $('.fas:last-child').addClass('actived');
     }
 });
 
-//Quando clicco su un pallino voglio che quello si colori e che mi appaia l'immagine corrispondente.
-
-//DA FINIRE
-
-// https://stackoverflow.com/questions/29207173/adding-function-on-bullet-for-image-slider-jquery
-
-
-// //Intercetto il click sul pallin0
-// $('i').click(function(){
-// //Identifico il pallino attivo
-// var clickedBull = $('i.actived');
-// //rimuovo lo stato di cliccato da quello
-// clickedBull.removeClass('actived');
-// //faccio diventare pieno il pallino in posizione 1
-// var toClickBull = $('.fa-circle').eq(n).addClass('actived');
-// //Ottengo la posizione del pallino cliccato
-// var index = $('i.actived').index();
-// index = n;
-// console.log(index);
-// })
-
-//seleziono il div che che ha length 4, se clicclo l'elemento in posizione 1 diventa bianco esso stesso e così via per gli altri
-
-// $('.bullets-off i').click(function(){
-//     var currentBull = $('li').index();
-//     console.log(currentBull);
-// })
+//intercetto il click sui pallini
+$('.bullets-on i').click(function() {
+    //recupero la posizione del pallino attualmente cliccato
+    var currentIndex = $(this).index();
+    console.log($(this).index());
+    //collego l'immagine corrente legandomi alla posizione del pallino cliccato
+    var currentElement = $('img').eq(currentIndex);
+    //sottraggo la visibilità all'immagine che la aveva
+    $('img.active').removeClass('active');
+    //aggiungo la visibilità all'imagine corrispondente al pallino cliccato
+    currentElement.addClass('active');
+    //sottraggo la visibilità al pallino cliccato
+    $('i.actived').removeClass('actived');
+    //attribuisco la visibilità al pallino su cui mi sto spostando
+    $(this).addClass('actived');
+});
