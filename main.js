@@ -83,4 +83,4 @@ function prevF () {
         $('img:last-child').addClass('active');
         $('.fas:last-child').addClass('actived');
     }
-}
+};
